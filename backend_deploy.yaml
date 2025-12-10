@@ -27,6 +27,12 @@ spec:
               value: '10'
           ports:
             - containerPort: 8000
+          livenessProbe:
+            httpGet:
+              path: /livez
+              port: 8000
+            periodSeconds: 10
+            failureThreshold: 2
           startupProbe:
             httpGet:
               path: /readyz
