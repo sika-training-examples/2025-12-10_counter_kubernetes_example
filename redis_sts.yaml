@@ -17,6 +17,13 @@ spec:
           image: redis:8
           ports:
             - containerPort: 6379
+          startupProbe:
+            exec:
+              command:
+              - redis-cli
+              - ping
+            periodSeconds: 1
+            failureThreshold: 20
           resources:
             requests:
               cpu: 20m
